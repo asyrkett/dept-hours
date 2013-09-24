@@ -2,6 +2,8 @@ package com.example.depthours;
 
 public class HoursForDayOfWeek {
 	
+	// Use the static constants from the Calendar class for the dayOfWeek
+	// like Calendar.TUESDAY = 3, Calendar.SATURDAY = 7, etc.
 	private int dayOfWeek;
 	private int openingHour;
 	private int closingHour;

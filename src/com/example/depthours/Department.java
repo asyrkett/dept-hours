@@ -13,12 +13,14 @@ public class Department {
 	private String departmentId;
 	private String name;
 	private List<HoursForDayOfWeek> hoursOfOperation;
+	private String url;
 
 	public Department(String departmentId, String name,
-			List<HoursForDayOfWeek> hoursOfOperation) {
+			List<HoursForDayOfWeek> hoursOfOperation, String url) {
 		this.departmentId = departmentId;
 		this.name = name;
 		this.hoursOfOperation = hoursOfOperation;
+		this.url = url;
 	}
 
 	public String getId() {
@@ -31,6 +33,10 @@ public class Department {
 
 	public List<HoursForDayOfWeek> getHoursOfOperation() {
 		return hoursOfOperation;
+	}
+	
+	public String getUrl() {
+		return url;
 	}
 
 	public boolean isOpen() {

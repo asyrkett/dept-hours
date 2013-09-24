@@ -8,14 +8,14 @@
 	>
 
 	<TextView
-		android:id="@+id/depthours_title"
+		android:id="@+id/depthours_name"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:textAppearance="?android:attr/textAppearanceLarge"
 	/>
 
 	<TextView
-		android:id="@+id/depthours_date"
+		android:id="@+id/depthours_open_closed"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:textColor="#00ff00"
@@ -23,7 +23,7 @@
 		/>
 		
 	<TextView
-		android:id="@+id/depthours_body"
+		android:id="@+id/depthours_hours"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:textAppearance="?android:attr/textAppearanceSmall"
