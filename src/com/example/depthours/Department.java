@@ -39,17 +39,24 @@ public class Department {
 		return url;
 	}
 
-	public boolean isOpen() {
+	public HoursForDayOfWeek getCurrentDay()
+	{
 		Calendar currentDateTime = Calendar.getInstance();
-		int currentDayOfWeek = currentDateTime.get(Calendar.DAY_OF_WEEK);
-		for (HoursForDayOfWeek day : hoursOfOperation) {
-			if (day.getDayOfWeek() == currentDayOfWeek) {
-				int currentTime = currentDateTime.get(Calendar.HOUR_OF_DAY) * 100
-						+ currentDateTime.get(Calendar.MINUTE);
-				return (currentTime > day.getOpeningHour() && day
-						.getClosingHour() > currentTime);
+		for (HoursForDayOfWeek day : hoursOfOperation)
+		{
+			if (day.getDayOfWeek() == currentDateTime.get(Calendar.DAY_OF_WEEK))
+			{
+				return day;
 			}
 		}
-		return false;
+		return new HoursForDayOfWeek();
 	}
+	
+	public boolean isOpen() {
+		Calendar currentDateTime = Calendar.getInstance();
+		HoursForDayOfWeek day = getCurrentDay();
+		int currentTime = currentDateTime.get(Calendar.HOUR_OF_DAY) * 100 + currentDateTime.get(Calendar.MINUTE);
+		return (currentTime > day.getOpeningHour() && day.getClosingHour() > currentTime);
+	}
+	
 }

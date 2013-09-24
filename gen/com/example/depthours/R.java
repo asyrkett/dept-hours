@@ -25,9 +25,9 @@ public final class R {
     }
     public static final class id {
         public static final int action_settings=0x7f080003;
-        public static final int depthours_body=0x7f080002;
-        public static final int depthours_date=0x7f080001;
-        public static final int depthours_title=0x7f080000;
+        public static final int depthours_hours=0x7f080002;
+        public static final int depthours_name=0x7f080000;
+        public static final int depthours_open_closed=0x7f080001;
     }
     public static final class layout {
         public static final int activity_depthours_detail=0x7f030000;
