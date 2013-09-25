@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?> 
+<DepartmentHours>
+	<Department >
+		<name>Library</name>
+		<hoursOfOperation>
+				<Monday>
+					<openingHour>8:00AM</openingHour>
+					<closingHour>9:00PM</closingHour>
+				</Monday>
+				<Tuesday>
+					<openingHour>8:00AM</openingHour>
+					<closingHour>9:00PM</closingHour>
+				</Tuesday>
+				<Wednesday>
+					<openingHour>8:00AM</openingHour>
+					<closingHour>9:00PM</closingHour>
+				</Wednesday>
+				<Thursday>
+						<openingHour>8:00AM</openingHour>
+						<closingHour>9:00PM</closingHour>
+				</Thursday>
+				<Friday>
+						<openingHour>8:00AM</openingHour>
+						<closingHour>9:00PM</closingHour>
+				</Friday>
+				<Saturday>
+						<openingHour>Closed</openingHour>
+						<closingHour>Closed</closingHour>
+				</Saturday>
+				<Sunday>
+						<openingHour>Closed</openingHour>
+						<closingHour>Closed</closingHour>
+				</Sunday>
+		</hoursOfOperation>
+		<URL>www.ggc.edu/library</URL>
+	</Department>
+</DepartmentHours>
+
+	
