@@ -22,7 +22,7 @@ public class Department {
 		this.hoursOfOperation = hoursOfOperation;
 		this.url = url;
 	}
-
+	//Gettters
 	public String getId() {
 		return departmentId;
 	}
@@ -30,15 +30,24 @@ public class Department {
 	public String getName() {
 		return name;
 	}
-
-	public List<HoursForDayOfWeek> getHoursOfOperation() {
-		return hoursOfOperation;
-	}
 	
 	public String getUrl() {
 		return url;
 	}
 
+	public void setId(String id){
+		this.departmentId = id;
+	}
+	
+	public void setName(String name){
+		this.name = name;
+	}
+
+	public List<HoursForDayOfWeek> getHoursOfOperation() {
+		return hoursOfOperation;
+	}
+	
+	
 	public HoursForDayOfWeek getCurrentDay()
 	{
 		Calendar currentDateTime = Calendar.getInstance();
@@ -57,6 +66,13 @@ public class Department {
 		HoursForDayOfWeek day = getCurrentDay();
 		int currentTime = currentDateTime.get(Calendar.HOUR_OF_DAY) * 100 + currentDateTime.get(Calendar.MINUTE);
 		return (currentTime > day.getOpeningHour() && day.getClosingHour() > currentTime);
+	}
+	
+	public HoursForDayOfWeek getDayByName(String name)
+	{
+		
+//		TODO: return a single day, HoursForDayOfWeek object.
+		return null;
 	}
 	
 }
