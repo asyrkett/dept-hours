@@ -3,8 +3,14 @@ package com.example.depthours;
 import java.util.ArrayList;
 import java.util.List;
 
+import department_database.DatabaseHelper;
+import department_database.helper_Department;
+
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.app.ListActivity;
 import android.content.Context;
 
@@ -18,16 +24,59 @@ public class DeptHoursMainActivity extends ListActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_depthours_main);
 		
+		CreateDB();
+		
 		departments = new ArrayList<Department>();
 		context = this;
 		
 		new DeptHoursTask().execute();
+		
 	}
 
+	
+	private void CreateDB() {
+		  db = new DatabaseHelper(getApplicationContext());
+		  
+	        // Creating tags
+	        helper_Department dept1 = new helper_Department("Library","0800","2200", "Monday");
+	        db.createDepartment(dept1);
+	 
+	        // Getting all department names
+	        Log.d("Get department", "Getting departments");	 
+	        List<helper_Department> allDepts= db.getAllToDepartments();
+	        
+	 
+	        // Don't forget to close database connection
+	        db.closeDB();
+	}
+
+
+	// Database Helper
+    DatabaseHelper db;
+ 
+   
+      
+	
 	private class DeptHoursTask extends AsyncTask<Void, Void, Void>
 	{
-		@Override
+		private boolean isNetworkAvailable() 
+		{
+		    ConnectivityManager connectivityManager = (ConnectivityManager)  getSystemService(Context.CONNECTIVITY_SERVICE);
+		    NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+		    return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+		}
+		
+		
+		
+		
+		
 		protected Void doInBackground(Void... arg0) {
+			
+				
+			
+			
+			
+			
 			// TODO Auto-generated method stub
 			/*List<HoursForDayOfWeek> hoursOfOperation1 = new ArrayList<HoursForDayOfWeek>();
 			List<HoursForDayOfWeek> hoursOfOperation2 = new ArrayList<HoursForDayOfWeek>();
@@ -51,5 +100,7 @@ public class DeptHoursMainActivity extends ListActivity {
 			DepartmentAdapter adapter = new DepartmentAdapter(context, departments);
 			setListAdapter(adapter);
 		}
+		
+		
 	}
 }

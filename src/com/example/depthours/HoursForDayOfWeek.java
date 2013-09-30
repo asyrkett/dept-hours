@@ -4,9 +4,19 @@ public class HoursForDayOfWeek {
 	
 	// Use the static constants from the Calendar class for the dayOfWeek
 	// like Calendar.TUESDAY = 3, Calendar.SATURDAY = 7, etc.
+	/*
+	 * Sunday = 1
+	 * Monday = 2
+	 * Tuesday = 3
+	 * Wednesday = 4
+	 * Thursday = 5
+	 * Friday = 6
+	 * Saturday = 7
+	 * 
+	 * */
 	private int dayOfWeek;
-	private int openingHour;
-	private int closingHour;
+	private int openingTime;
+	private int closingTime;
 	
 	public HoursForDayOfWeek()
 	{
@@ -15,8 +25,8 @@ public class HoursForDayOfWeek {
 	
 	public HoursForDayOfWeek(int dayOfWeek, int openingHour, int closingHour) {
 		this.dayOfWeek = dayOfWeek;
-		this.openingHour = openingHour;
-		this.closingHour = closingHour;
+		this.openingTime = openingHour;
+		this.closingTime = closingHour;
 	}
 
 	public int getDayOfWeek() {
@@ -24,11 +34,11 @@ public class HoursForDayOfWeek {
 	}
 
 	public int getOpeningHour() {
-		return openingHour;
+		return openingTime;
 	}
 
 	public int getClosingHour() {
-		return closingHour;
+		return closingTime;
 	}
 	
 	private String militaryToStandardTime(int militaryTime)
@@ -61,7 +71,7 @@ public class HoursForDayOfWeek {
 	
 	public String hoursToHtmlString()
 	{
-		return "<html>Opens: " + militaryToStandardTime(openingHour) + "<br>" +
-				"Closes: " + militaryToStandardTime(closingHour) + "</html>";
+		return "<html>Opens: " + militaryToStandardTime(openingTime) + "<br>" +
+				"Closes: " + militaryToStandardTime(closingTime) + "</html>";
 	}
 }
