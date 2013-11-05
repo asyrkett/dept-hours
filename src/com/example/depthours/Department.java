@@ -5,7 +5,6 @@ import java.util.List;
 
 /**
  * 
- * @author Aida
  * 
  */
 	
@@ -14,15 +13,18 @@ public class Department {
 	private String name;
 	private List<HoursForDayOfWeek> hoursOfOperation;
 	private String url;
-
-	public Department(String departmentId, String name,
+	
+	public Department(){
+		this("", null, "");
+	}
+	
+	public Department(String name,
 			List<HoursForDayOfWeek> hoursOfOperation, String url) {
-		this.departmentId = departmentId;
 		this.name = name;
 		this.hoursOfOperation = hoursOfOperation;
 		this.url = url;
 	}
-	//Gettters
+
 	public String getId() {
 		return departmentId;
 	}
@@ -30,51 +32,52 @@ public class Department {
 	public String getName() {
 		return name;
 	}
-	
-	public String getUrl() {
-		return url;
-	}
-
-<<<<<<< HEAD
-	public void setId(String id){
-		this.departmentId = id;
-	}
-	
-	public void setName(String name){
-		this.name = name;
-	}
 
 	public List<HoursForDayOfWeek> getHoursOfOperation() {
 		return hoursOfOperation;
 	}
 	
-	
+	public String getUrl() {
+		return url;
+	}
+
 	public HoursForDayOfWeek getCurrentDay()
 	{
-=======
-	public boolean isOpen() {
->>>>>>> parent of e51b360... modified classes, main activity to display list
 		Calendar currentDateTime = Calendar.getInstance();
-		int currentDayOfWeek = currentDateTime.get(Calendar.DAY_OF_WEEK);
-		for (HoursForDayOfWeek day : hoursOfOperation) {
-			if (day.getDayOfWeek() == currentDayOfWeek) {
-				int currentTime = currentDateTime.get(Calendar.HOUR_OF_DAY) * 100
-						+ currentDateTime.get(Calendar.MINUTE);
-				return (currentTime > day.getOpeningHour() && day
-						.getClosingHour() > currentTime);
+		for (HoursForDayOfWeek day : hoursOfOperation)
+		{
+			if (day.getDayOfWeek() == currentDateTime.get(Calendar.DAY_OF_WEEK))
+			{
+				return day;
 			}
 		}
-		return false;
-	}
-<<<<<<< HEAD
-	
-	public HoursForDayOfWeek getDayByName(String name)
-	{
-		
-//		TODO: return a single day, HoursForDayOfWeek object.
-		return null;
+		return new HoursForDayOfWeek();
 	}
 	
-=======
->>>>>>> parent of e51b360... modified classes, main activity to display list
+	public boolean isOpen() {
+		Calendar currentDateTime = Calendar.getInstance();
+		HoursForDayOfWeek day = getCurrentDay();
+		int currentTime = currentDateTime.get(Calendar.HOUR_OF_DAY) * 100 + currentDateTime.get(Calendar.MINUTE);
+		return (currentTime > day.getOpeningHour() && day.getClosingHour() > currentTime);
+	}
+	
+	public String getDepartmentId() {
+		return departmentId;
+	}
+
+	public void setDepartmentId(String departmentId) {
+		this.departmentId = departmentId;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setHoursOfOperation(List<HoursForDayOfWeek> hoursOfOperation) {
+		this.hoursOfOperation = hoursOfOperation;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
 }
