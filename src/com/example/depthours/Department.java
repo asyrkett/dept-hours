@@ -35,6 +35,7 @@ public class Department {
 		return url;
 	}
 
+<<<<<<< HEAD
 	public void setId(String id){
 		this.departmentId = id;
 	}
@@ -50,23 +51,22 @@ public class Department {
 	
 	public HoursForDayOfWeek getCurrentDay()
 	{
+=======
+	public boolean isOpen() {
+>>>>>>> parent of e51b360... modified classes, main activity to display list
 		Calendar currentDateTime = Calendar.getInstance();
-		for (HoursForDayOfWeek day : hoursOfOperation)
-		{
-			if (day.getDayOfWeek() == currentDateTime.get(Calendar.DAY_OF_WEEK))
-			{
-				return day;
+		int currentDayOfWeek = currentDateTime.get(Calendar.DAY_OF_WEEK);
+		for (HoursForDayOfWeek day : hoursOfOperation) {
+			if (day.getDayOfWeek() == currentDayOfWeek) {
+				int currentTime = currentDateTime.get(Calendar.HOUR_OF_DAY) * 100
+						+ currentDateTime.get(Calendar.MINUTE);
+				return (currentTime > day.getOpeningHour() && day
+						.getClosingHour() > currentTime);
 			}
 		}
-		return new HoursForDayOfWeek();
+		return false;
 	}
-	
-	public boolean isOpen() {
-		Calendar currentDateTime = Calendar.getInstance();
-		HoursForDayOfWeek day = getCurrentDay();
-		int currentTime = currentDateTime.get(Calendar.HOUR_OF_DAY) * 100 + currentDateTime.get(Calendar.MINUTE);
-		return (currentTime > day.getOpeningHour() && day.getClosingHour() > currentTime);
-	}
+<<<<<<< HEAD
 	
 	public HoursForDayOfWeek getDayByName(String name)
 	{
@@ -75,4 +75,6 @@ public class Department {
 		return null;
 	}
 	
+=======
+>>>>>>> parent of e51b360... modified classes, main activity to display list
 }

@@ -1,5 +1,6 @@
 package com.example.depthours;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,16 +14,19 @@ import android.os.Bundle;
 import android.util.Log;
 import android.app.ListActivity;
 import android.content.Context;
+=======
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+>>>>>>> parent of e51b360... modified classes, main activity to display list
 
-public class DeptHoursMainActivity extends ListActivity {
+public class DeptHoursMainActivity extends Activity {
 
-	private List<Department> departments;
-	private Context context;
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_depthours_main);
+<<<<<<< HEAD
 		
 		CreateDB();
 		
@@ -102,5 +106,15 @@ public class DeptHoursMainActivity extends ListActivity {
 		}
 		
 		
+=======
 	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.dept_hours_main, menu);
+		return true;
+>>>>>>> parent of e51b360... modified classes, main activity to display list
+	}
+
 }

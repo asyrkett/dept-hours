@@ -18,11 +18,6 @@ public class HoursForDayOfWeek {
 	private int openingTime;
 	private int closingTime;
 	
-	public HoursForDayOfWeek()
-	{
-		this(0, 0, 0);
-	}
-	
 	public HoursForDayOfWeek(int dayOfWeek, int openingHour, int closingHour) {
 		this.dayOfWeek = dayOfWeek;
 		this.openingTime = openingHour;
@@ -40,6 +35,7 @@ public class HoursForDayOfWeek {
 	public int getClosingHour() {
 		return closingTime;
 	}
+<<<<<<< HEAD
 	
 	private String militaryToStandardTime(int militaryTime)
 	{
@@ -74,4 +70,6 @@ public class HoursForDayOfWeek {
 		return "<html>Opens: " + militaryToStandardTime(openingTime) + "<br>" +
 				"Closes: " + militaryToStandardTime(closingTime) + "</html>";
 	}
+=======
+>>>>>>> parent of e51b360... modified classes, main activity to display list
 }
