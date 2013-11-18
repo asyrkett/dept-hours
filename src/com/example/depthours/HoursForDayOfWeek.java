@@ -1,79 +1,141 @@
 package com.example.depthours;
-
-public class HoursForDayOfWeek {
+/** Class: HoursForDayOfWeek
+ * 
+ * This class represents the opening and closing times of a department
+ * in military time, 0 to 2300, for a single day of the week,
+ * Sunday (1) through Saturday (7).
+ */
+public class HoursForDayOfWeek
+{
 	
-	// Use the static constants from the Calendar class for the dayOfWeek
-	// like Calendar.TUESDAY = 3, Calendar.SATURDAY = 7, etc.
 	private int dayOfWeek;
-	private int openingHour;
-	private int closingHour;
+	private int openingTime;
+	private int closingTime;
 	
+	/**
+	 * Default constructor
+	 */
 	public HoursForDayOfWeek()
 	{
 		this(0, 0, 0);
 	}
 	
-	public HoursForDayOfWeek(int dayOfWeek, int openingHour, int closingHour) {
-		this.dayOfWeek = dayOfWeek;
-		this.openingHour = openingHour;
-		this.closingHour = closingHour;
-	}
-
-	public int getDayOfWeek() {
-		return dayOfWeek;
-	}
-
-	public int getOpeningHour() {
-		return openingHour;
-	}
-
-	public int getClosingHour() {
-		return closingHour;
-	}
-	
-	public void setDayOfWeek(int dayOfWeek) {
-		this.dayOfWeek = dayOfWeek;
-	}
-
-	public void setOpeningHour(int openingHour) {
-		this.openingHour = openingHour;
-	}
-
-	public void setClosingHour(int closingHour) {
-		this.closingHour = closingHour;
-	}
-
-	private String militaryToStandardTime(int militaryTime)
+	/**
+	 * Constructor specifying the day of the week and the opening and closing times
+	 * @param dayOfWeek the day of the week, with a value of 1 (Sunday) to 7 (Saturday)
+	 * @param openingTime the opening time
+	 * @param closingTime the closing time
+	 */
+	public HoursForDayOfWeek(int dayOfWeek, int openingTime, int closingTime)
 	{
-		String standardTime = "";
+		this.dayOfWeek = dayOfWeek;
+		this.openingTime = openingTime;
+		this.closingTime = closingTime;
+	}
+
+	/**
+	 * Converts the specified military time to standard time
+	 * @param militaryTime the time to convert to standard time
+	 * @return a string of the standard time
+	 */
+	private static String toStandardTime(int militaryTime)
+	{
 		int hourOfDay = militaryTime / 100;
 		int minuteOfHour = militaryTime % 100;
 		String minutes = "";
+		String standardTime = "";
+		
 		if(minuteOfHour < 10)
+		{
 			minutes += "0" + minuteOfHour;
+		}
 		else
+		{
 			minutes += minuteOfHour;
-		if (hourOfDay >= 1 && hourOfDay <= 12)
-		{
-			standardTime = hourOfDay + ":" + minutes;
-			if (hourOfDay != 12)
-				standardTime += " AM";
-			else
-				standardTime += " PM";
 		}
-		else if (hourOfDay == 0 || hourOfDay <= 23)
+		
+		if (hourOfDay % 12 == 0)
 		{
-			if (hourOfDay == 0)
-				standardTime = "12:" + minutes + " AM";
-			else 
-				standardTime = (hourOfDay - 12) + ":" + minutes + " PM";
+			standardTime = "12:" + minutes;
 		}
+		else
+		{
+			standardTime = (hourOfDay % 12) + ":" + minutes;
+		}
+		
+		if (hourOfDay <= 12)
+		{
+			standardTime += " AM";
+		}
+		else
+		{
+			standardTime += " PM";
+		}
+		
 		return standardTime;
 	}
 	
-	public String hoursToHtmlString()
+	/**
+	 * Returns the opening and closing times as an html formatted string
+	 * @return the times as an html string
+	 */
+	public String toHtmlString()
 	{
-		return "<html>Opens: " + militaryToStandardTime(openingHour) + "<br>" +
-				"Closes: " + militaryToStandardTime(closingHour) + "</html>";
+		return "<html>Opens: " + toStandardTime(openingTime) + "<br>" +
+				"Closes: " + toStandardTime(closingTime) + "</html>";
+	}
+	
+	/**
+	 * Returns the day of the week, a value of 1 (Sunday) through 7 (Saturday)
+	 * @return the day of the week
+	 */
+	public int getDayOfWeek()
+	{
+		return dayOfWeek;
+	}
+
+	/**
+	 * Returns the opening time in military hours
+	 * @return the opening time
+	 */
+	public int getOpeningTime()
+	{
+		return openingTime;
+	}
+
+	/**
+	 * Returns the closing time in military hours
+	 * @return the closing time
+	 */
+	public int getClosingTime()
+	{
+		return closingTime;
+	}
+	
+	/**
+	 * Sets the day of the week
+	 * @param dayOfWeek the day of the week to set
+	 */
+	public void setDayOfWeek(int dayOfWeek)
+	{
+		this.dayOfWeek = dayOfWeek;
+	}
+
+	/**
+	 * Sets the opening time
+	 * @param openingTime the opening time to set
+	 */
+	public void setOpeningTime(int openingTime)
+	{
+		this.openingTime = openingTime;
+	}
+
+	/**
+	 * Sets the closing time
+	 * @param closingTime the closing time to set
+	 */
+	public void setClosingTime(int closingTime)
+	{
+		this.closingTime = closingTime;
 	}
 }

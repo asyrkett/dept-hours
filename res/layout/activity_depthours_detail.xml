@@ -18,8 +18,7 @@
 		android:id="@+id/depthours_open_closed"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
-		android:textColor="#00ff00"
-		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:textAppearance="?android:attr/textAppearanceMedium"
 		/>
 		
 	<TextView
